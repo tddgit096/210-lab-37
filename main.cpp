@@ -1,34 +1,42 @@
 #include <iostream>
 #include <fstream>
+#include <map>
+#include <list>
 using namespace std;
 
 string INPUTFILE = "data.txt";
+int HASHSIZE = 70;
 
-int sum_ascii(string);
-int read_file(string);
+int gen_hash_index(string);
+int read_file(string, map<int,list<string>>);
 
 int main() {
-    cout<<"Grand Total sum: "<<read_file(INPUTFILE)<<endl;
+    map <int,list<string>> hash_table; // a map of int-keys storing string-lists
+
     return 0;
 }
 
-//function recieves a string and returns the sum of the string's character's ascii values
-int sum_ascii(string s){
+//function recieves a string and returns the hash index
+int gen_hash_index(string s){
     int sum=0;
     for(char c : s){ //range based loop, for every char in the string
         sum+=(int)c; //type cast each char into int.
     }
-    return sum;
+    return sum % HASHSIZE;
 }
 
 //function reads input file and sums up the entire file.
-int read_file(string inputfile){
+int read_file(string inputfile, map<int,list<string>> table){
     int sum = 0;
     fstream file(inputfile);
     if(file.is_open()){
         string line;
         while(getline(file,line)){
-            sum+=sum_ascii(line);
+            int hash_index = gen_hash_index(line);
+            pair 
+
+
+
         }
         file.close();
     }
