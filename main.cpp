@@ -5,10 +5,11 @@
 using namespace std;
 
 string INPUTFILE = "data.txt";
-int HASHSIZE = 70;
+int HASHSIZE = 70 , TESTRUN = 100;
 
 int gen_hash_index(string);
 int read_file(string, map<int,list<string>>);
+void print(map<int,list<string>>);
 
 int main() {
     map <int,list<string>> hash_table; // a map of int-keys storing string-lists
@@ -32,11 +33,8 @@ int read_file(string inputfile, map<int,list<string>> table){
     if(file.is_open()){
         string line;
         while(getline(file,line)){
-            int hash_index = gen_hash_index(line);
-            pair 
-
-
-
+            pair<int, string> hash_pair = {gen_hash_index(line), line}; //store hash and string into pair
+            (table[hash_pair.first]).push_back(hash_pair.second);       //access map by hash key. insert the string into that key's list.
         }
         file.close();
     }
@@ -45,6 +43,11 @@ int read_file(string inputfile, map<int,list<string>> table){
         return -1;
     }
     return sum;
+}
+
+//print the outputs
+void print(map<int,list<string>> table){
+    for(auto pair : table)
 }
 
 /* 
