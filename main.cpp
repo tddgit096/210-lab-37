@@ -9,11 +9,12 @@ int HASHSIZE = 70 , TESTRUN = 100;
 
 int gen_hash_index(string);
 int read_file(string, map<int,list<string>>);
-void print(map<int,list<string>>);
+void print(map<int,list<string>>, int);
 
 int main() {
     map <int,list<string>> hash_table; // a map of int-keys storing string-lists
-
+    read_file(INPUTFILE,hash_table);
+    print(hash_table,TESTRUN);
     return 0;
 }
 
@@ -46,9 +47,21 @@ int read_file(string inputfile, map<int,list<string>> table){
 }
 
 //print the outputs
-void print(map<int,list<string>> table){
-    for(auto pair : table)
+void print(map<int,list<string>> table, int limit = -1){
+    if(limit = -1)
+    
+    cout<<"Displaying the first "<<TESTRUN<<" entries to the console:\n";
+    int count = 0; //counter for limiting the iteration
+    for(auto pair : table){
+        for(string s: pair.second){
+            if(count>=TESTRUN)
+                return;
+            cout<<s<<endl;
+            count++;
+        }
+    }
 }
+
 
 /* 
 These targets are present in the dataset and can be used for testing:
