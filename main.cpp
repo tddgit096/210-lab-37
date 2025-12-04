@@ -14,6 +14,7 @@ void print(map<int,list<string>>, int);
 int main() {
     map <int,list<string>> hash_table; // a map of int-keys storing string-lists
     read_file(INPUTFILE,hash_table);
+    cout<<"TEST "<<hash_table[8].front()<<endl;
     print(hash_table,TESTRUN);
     return 0;
 }
@@ -35,7 +36,8 @@ int read_file(string inputfile, map<int,list<string>> table){
         string line;
         while(getline(file,line)){
             pair<int, string> hash_pair = {gen_hash_index(line), line}; //store hash and string into pair
-            (table[hash_pair.first]).push_back(hash_pair.second);       //access map by hash key. insert the string into that key's list.
+            cout<<"inputting: key "<<hash_pair.first<<" with val"<<hash_pair.second<<endl;
+            table[hash_pair.first].push_back(hash_pair.second);       //access map by hash key. insert the string into that key's list.
         }
         file.close();
     }
@@ -47,9 +49,9 @@ int read_file(string inputfile, map<int,list<string>> table){
 }
 
 //print the outputs
-void print(map<int,list<string>> table, int limit = -1){
-    if(limit = -1)
-    
+void print(map<int,list<string>> table, int limit =-1){
+    if(limit == -1) //defaults to unlimited size
+        limit = table.size();
     cout<<"Displaying the first "<<TESTRUN<<" entries to the console:\n";
     int count = 0; //counter for limiting the iteration
     for(auto pair : table){
@@ -61,7 +63,6 @@ void print(map<int,list<string>> table, int limit = -1){
         }
     }
 }
-
 
 /* 
 These targets are present in the dataset and can be used for testing:
