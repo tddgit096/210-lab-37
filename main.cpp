@@ -1,17 +1,23 @@
 #include <iostream>
 using namespace std;
 
+int sum_ascii(string);
 
 int main() {
-    char a = 'A';
-    cout << a << endl;
-    cout << (int) a << endl;
-    int b = 66;
-    cout << b << endl;
-    cout << (char) b << endl;
-    
-
+    string test = "Hello World";
+    cout<<test <<" --> ascii sum:  "<<sum_ascii(test)<<endl;
     return 0;
+
+    cout<<
+}
+
+//function recieves a string and returns the sum of the string's character's ascii values
+int sum_ascii(string s){
+    int sum=0;
+    for(char c : s){ //range based loop, for every char in the string
+        sum+=(int)c; //type cast each char into int.
+    }
+    return sum;
 }
 
 /* 
