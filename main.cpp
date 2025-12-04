@@ -6,9 +6,11 @@ int sum_ascii(string);
 int main() {
     string test = "Hello World";
     cout<<test <<" --> ascii sum:  "<<sum_ascii(test)<<endl;
-    return 0;
 
-    cout<<
+    cout<<endl<<"Manual Confirmation: ";
+    cout<<((int)'H' +(int)'e' +(int)'l' +(int)'l' +(int)'o' +(int)' ' +(int)'W' +(int)'o' +(int)'r' +(int)'l' +(int)'d'); 
+    cout<<endl;
+    return 0;
 }
 
 //function recieves a string and returns the sum of the string's character's ascii values
