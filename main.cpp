@@ -16,7 +16,6 @@ void menu(map<int,list<string>>&);
 int main() {
     map <int,list<string>> hash_table; // a map of int-keys storing string-lists
     read_file(INPUTFILE,hash_table);
-    //print(hash_table,TESTRUN);
     menu(hash_table);
     return 0;
 }
