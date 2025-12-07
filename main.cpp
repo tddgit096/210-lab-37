@@ -46,6 +46,18 @@ void menu(map<int,list<string>> H){
             string searchKey;
             cout<<"Which key would you like to search for (case sensitive)?\n";
             getline(cin, searchKey);
+            int hash_index = gen_hash_index(searchKey);
+            bool keyfound = false;
+            for(auto element : H[hash_index]){
+                if(searchKey == element){
+                    cout<<"Target key: "<<searchKey<<" found.\n";
+                    keyfound = true;
+                    break;
+                }
+            }
+            if(!keyfound){
+                cout<<"Target key: "<<searchKey<<" not found.\n";
+            }
             break;
         }
         default:
