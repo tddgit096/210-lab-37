@@ -11,12 +11,40 @@ int HASHSIZE = 70 , TESTRUN = 100;
 int gen_hash_index(string);
 int read_file(string, map<int,list<string>>&);
 void print(map<int,list<string>>, int);
+void menu(map<int,list<string>>);
 
 int main() {
     map <int,list<string>> hash_table; // a map of int-keys storing string-lists
     read_file(INPUTFILE,hash_table);
     print(hash_table,TESTRUN);
     return 0;
+}
+
+void menu(map<int,list<string>> H){
+    while(true){
+        string strInput;
+        //Menu Display for user
+        cout<<"============ Main Menu ============\n";
+        cout<<"  [1]Print first 100 entries.\n";
+        cout<<"  [2]Search for a key.\n";
+        cout<<"  [3]Add a key.\n";
+        cout<<"  [4]Remove a key.\n";
+        cout<<"  [5]Modify a key.\n";
+        cout<<"  [0]Exit.\n";
+
+        getline(cin,strInput);
+        int input = stoi(strInput);
+        switch (input)
+        {
+        case 0: //exit
+            return;
+        case 1: //display
+            B.print();
+            break;
+        }
+        default:
+            break;
+        }
 }
 
 //function recieves a string and returns the hash index
