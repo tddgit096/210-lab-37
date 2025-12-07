@@ -16,7 +16,8 @@ void menu(map<int,list<string>>);
 int main() {
     map <int,list<string>> hash_table; // a map of int-keys storing string-lists
     read_file(INPUTFILE,hash_table);
-    print(hash_table,TESTRUN);
+    //print(hash_table,TESTRUN);
+    menu(hash_table);
     return 0;
 }
 
@@ -39,12 +40,18 @@ void menu(map<int,list<string>> H){
         case 0: //exit
             return;
         case 1: //display
-            B.print();
+            print(H,TESTRUN);
+            break;
+        case 2:{
+            string searchKey;
+            cout<<"Which key would you like to search for (case sensitive)?\n";
+            getline(cin, searchKey);
             break;
         }
         default:
             break;
         }
+    }
 }
 
 //function recieves a string and returns the hash index
