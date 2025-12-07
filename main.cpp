@@ -11,7 +11,7 @@ int HASHSIZE = 70 , TESTRUN = 100;
 int gen_hash_index(string);
 int read_file(string, map<int,list<string>>&);
 void print(map<int,list<string>>, int);
-void menu(map<int,list<string>>);
+void menu(map<int,list<string>>&);
 
 int main() {
     map <int,list<string>> hash_table; // a map of int-keys storing string-lists
@@ -21,7 +21,7 @@ int main() {
     return 0;
 }
 
-void menu(map<int,list<string>> H){
+void menu(map<int,list<string>> &H){
     while(true){
         string strInput;
         //Menu Display for user
@@ -65,6 +65,24 @@ void menu(map<int,list<string>> H){
             cout<<"Enter the new key to add (case sensitive):\n";
             getline(cin, newKey);
             H[gen_hash_index(newKey)].push_back(newKey);
+            break;
+        }
+        case 4:{
+            string targetKey;
+            cout<<"Which key would you like to remove (case sensitive)?\n";
+            getline(cin, targetKey);
+            bool keyfound = false;
+            for(auto element : H[gen_hash_index(targetKey)]){
+                if(targetKey == element){
+                    H[gen_hash_index(targetKey)].remove(element);
+                    cout<<"Target key: "<<targetKey<<" deleted.\n";
+                    keyfound = true;
+                    break;
+                }
+            }
+            if(!keyfound){
+                cout<<"Target key: "<<targetKey<<" not found.\n";
+            }
         }
         default:
             break;
