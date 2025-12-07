@@ -60,6 +60,12 @@ void menu(map<int,list<string>> H){
             }
             break;
         }
+        case 3:{
+            string newKey;
+            cout<<"Enter the new key to add (case sensitive):\n";
+            getline(cin, newKey);
+            H[gen_hash_index(newKey)].push_back(newKey);
+        }
         default:
             break;
         }
