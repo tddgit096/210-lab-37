@@ -83,6 +83,29 @@ void menu(map<int,list<string>> &H){
             if(!keyfound){
                 cout<<"Target key: "<<targetKey<<" not found.\n";
             }
+            break;
+        }
+        case 5:{
+            string targetKey;
+            cout<<"Which key would you like to modify (case sensitive)?\n";
+            getline(cin, targetKey);
+            bool keyfound = false;
+            for(string element : H[gen_hash_index(targetKey)]){ //if we directly modify a value without re-organizing it into the hash table, it will "break" our table, so lets simply delete the old value and then add the new value anew.
+                if(targetKey == element){
+                    string newVal;
+                    cout<<"Target key: "<<targetKey<<" found. Enter the new value.\n";
+                    getline(cin, newVal);
+                    H[gen_hash_index(targetKey)].remove(element);// delete the old val
+                    H[gen_hash_index(newVal)].push_back(newVal); // add the new val in its proper hash index.
+                    keyfound = true;
+                    cout<<targetKey<<" has been modified into: "<< newVal<<endl;
+                    break;
+                }
+            }
+            if(!keyfound){
+                cout<<"Target key: "<<targetKey<<" not found.\n";
+            }
+            break;
         }
         default:
             break;
